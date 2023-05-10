@@ -1,4 +1,4 @@
-def call(Int maxRetries, String condition, body) {
+def call(Integer maxRetries, String condition, body) {
     def config = [:]
     def retries = 0
     body.resolveStrategy = Closure.OWNER_FIRST
