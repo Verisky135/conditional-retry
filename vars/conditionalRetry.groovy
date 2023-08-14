@@ -5,7 +5,7 @@ def call(Integer maxRetries, String filename, String[] match, body) {
     body.delegate = config
 
     retry (maxRetries) {
-        def isMatch = match.any{el -> readFile(filename).contains(el)
+        def isMatch = match.any{el -> readFile(filename).contains(el)}
         println isMatch
         if (retries == 0 || match.any{el -> readFile(filename).contains(el)}) {
             body()
