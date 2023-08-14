@@ -6,7 +6,7 @@ def call(Integer maxRetries, String filename, String[] match, Integer retrySleep
 
     retry (maxRetries) {
         if (retries == 0 || match.any{el -> readFile(filename).contains(el)}) {
-            if (retries > 0 && retrySleepMs > 0) {
+            if (retries > 0 && retrySleep > 0) {
                 if (expBackoff) {
                     sleep(retrySleep * pow(2, retries - 1))
                 } else {
