@@ -12,6 +12,6 @@ def call(Integer maxRetries, String filename, String[] match, body) {
         } else {
             error("Build doesn't fulfill conditional to retry.")
         }
-        retries++
+        retries += 1
     }
 }
