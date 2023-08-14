@@ -7,6 +7,7 @@ def call(Integer maxRetries, String filename, String[] match, body) {
     retry (maxRetries) {
         def isMatch = match.any{el -> readFile(filename).contains(el)}
         println isMatch
+        println retries == 0
         if (retries == 0 || match.any{el -> readFile(filename).contains(el)}) {
             body()
         } else {
