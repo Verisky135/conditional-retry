@@ -9,10 +9,10 @@ def call(Integer maxRetries, String filename, String[] match, body) {
         println isMatch
         println retries == 0
         if (retries == 0 || match.any{el -> readFile(filename).contains(el)}) {
+            retries += 1
             body()
         } else {
             error("Build doesn't fulfill conditional to retry.")
         }
-        retries = retries + 1
     }
 }
