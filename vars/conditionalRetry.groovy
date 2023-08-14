@@ -1,14 +1,14 @@
 def call(Integer maxRetries, String filename, String[] match, Integer retrySleep = 15, body) {
     def config = [:]
     def retries = 0
-    def retrySleep2 = 0 
     body.resolveStrategy = Closure.OWNER_FIRST
     body.delegate = config
 
     retry (maxRetries) {
         if (retries == 0 || match.any{el -> readFile(filename).contains(el)}) {
-            retrySleep2 = retries == 0 ? 0 : retrySleep
-            sleep(retrySleep2)
+            if (retries > 0) {
+                sleep(retrySleep)
+            }
             retries += 1
             body()
         } else {
