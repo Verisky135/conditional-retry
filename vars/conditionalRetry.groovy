@@ -1,4 +1,4 @@
-def call(Integer retries = 5, String filename="output.txt", String[] errorMessages, Integer retrySleep = 10, Boolean expBackoff = true, body) {
+def call(Integer retries = 5, String filename="output.txt", ArrayList<String> errorMessages, Integer retrySleep = 10, Boolean expBackoff = true, body) {
     def config = [:]
     def retryIndex = 0
     body.resolveStrategy = Closure.OWNER_FIRST
