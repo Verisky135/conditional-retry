@@ -1,4 +1,4 @@
-def call(Integer maxRetries, String filename, String[] match, Integer retrySleep = 5, Boolean expBackoff = true, body) {
+def call(Integer maxRetries = 5, String filename, String[] match, Integer retrySleep = 10, Boolean expBackoff = true, body) {
     def config = [:]
     def retries = 0
     body.resolveStrategy = Closure.OWNER_FIRST
@@ -16,7 +16,7 @@ def call(Integer maxRetries, String filename, String[] match, Integer retrySleep
             retries += 1
             body()
         } else {
-            error("Build doesn't fulfill conditional to retry.")
+            error("Skipping retry : build doesn't fulfill condition to retry.")
         }
     }
 }
