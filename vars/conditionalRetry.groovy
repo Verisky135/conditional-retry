@@ -22,7 +22,7 @@ def call(Integer retries = 5, String filename="output.txt", ArrayList<String> er
                 error(readFile("output.txt"))
             }
             else {
-                error("")
+                error("Skipping retry : build doesn't fulfill condition to retry.")
             }
         }
     }
