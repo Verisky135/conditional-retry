@@ -18,8 +18,8 @@ def call(Integer retries = 5, String filename="output.txt", ArrayList<String> er
             body()
         } else {
             if (showNotMatchingError) {
-                error(readFile("output.txt"))
                 showNotMatchingError = false
+                error(readFile("output.txt"))
             }
             else {
                 error("")
