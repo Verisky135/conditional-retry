@@ -1,6 +1,7 @@
 def call(Integer retries = 5, String filename="output.txt", ArrayList<String> errorMessages, Integer retrySleep = 10, Boolean expBackoff = true, body) {
     def config = [:]
     def retryIndex = 0
+    def showNotMatchingError = true
     body.resolveStrategy = Closure.OWNER_FIRST
     body.delegate = config
 
@@ -16,7 +17,12 @@ def call(Integer retries = 5, String filename="output.txt", ArrayList<String> er
             retryIndex += 1
             body()
         } else {
-            error(readFile("output.txt"))
+            if (showNotMatchingError) {
+                error(readFile("output.txt"))
+            }
+            else {
+                error("")
+            }
         }
     }
 }
