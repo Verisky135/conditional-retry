@@ -16,6 +16,7 @@ def call(Integer retries = 5, String filename="output.txt", ArrayList<String> er
             retryIndex += 1
             body()
         } else {
+            sh "cat " + filename
             error("Skipping retry : build doesn't fulfill condition to retry.")
         }
     }
